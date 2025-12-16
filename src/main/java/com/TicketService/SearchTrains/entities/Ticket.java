@@ -14,7 +14,7 @@ public class Ticket {
     @Id
     private String ticketId;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
 

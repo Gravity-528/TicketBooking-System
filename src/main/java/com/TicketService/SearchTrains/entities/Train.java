@@ -19,12 +19,12 @@ import java.util.List;
 public class Train {
 
     @Id
-    private String TrainId;
+    private String trainId;
 
-    private String TrainName;
-    private String Source;
-    private String Destination;
-    private String ArrivalTime;
+    private String trainName;
+    private String source;
+    private String destination;
+    private String arrivalTime;
     private String startDate;
     private String endDate;
 

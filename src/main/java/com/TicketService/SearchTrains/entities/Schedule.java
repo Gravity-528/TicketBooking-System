@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,16 +15,24 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer ScheduleId;
+    private Integer scheduleId;
     private String time;
     private String Date;
-    private String PlatformAssigned;
 
     @ManyToOne
-    @JoinColumn(name = "TrainId")
+    @JoinColumn(name = "trainId")
     private Train train;
 
     @ManyToOne
-    @JoinColumn(name = "StationId")
+    @JoinColumn(name = "stationId")
     private Station station;
+
+    @OneToOne
+    @JoinColumn(name = "platformId")
+    private Platform platform;
+
+    @OneToMany(mappedBy = "schedule")
+    private List<Ticket> tickets;
+
+
 }

@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: Garvit@123
+      MYSQL_DATABASE: train_db
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  neo4j:
+    image: neo4j:5
+    container_name: neo4j-db
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: neo4j/password
+    volumes:
+      - neo4j_data:/data
+
+volumes:
+  mysql_data:
+  neo4j_data:

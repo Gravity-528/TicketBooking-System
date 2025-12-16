@@ -1,12 +1,11 @@
 package com.TicketService.SearchTrains.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -15,10 +14,13 @@ import lombok.NoArgsConstructor;
 public class Coupon {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String couponId;
-
+    private String description;
     private Integer discountPercentage;
+
+    @OneToMany(mappedBy = "coupon")
+    private List<Ticket> tickets;
+
 
 
 }

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Seats {
 
     @Id
-    private String SeatId;
+    private String seatId;
     private Integer price;
     private String status;
     private String date;
@@ -21,11 +21,4 @@ public class Seats {
     @JoinColumn(name = "trainId")
     private Train train;
 
-    @OneToOne
-    @JoinColumn(name = "ticketId",unique = true)
-    private Ticket ticket;
-
-    @ManyToOne
-    @JoinColumn(name = "userId",unique = true)
-    private User user;
 }

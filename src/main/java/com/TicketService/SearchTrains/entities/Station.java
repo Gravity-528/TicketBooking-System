@@ -17,10 +17,10 @@ import java.util.List;
 public class Station {
 
     @Id
-    private String StationId;
-    private Integer Longitude;
-    private Integer Latitude;
-    private String StationName;
+    private String stationId;
+    private Integer longitude;
+    private Integer latitude;
+    private String stationName;
 
     @OneToMany(mappedBy = "station" ,cascade = CascadeType.ALL)
     private List<Platform> platform;
