@@ -18,8 +18,8 @@ public class Station {
 
     @Id
     private String stationId;
-    private Integer longitude;
-    private Integer latitude;
+    private double longitude;
+    private double latitude;
     private String stationName;
 
     @OneToMany(mappedBy = "station" ,cascade = CascadeType.ALL)
