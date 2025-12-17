@@ -20,8 +20,8 @@ public interface ScheduleRepository extends JpaRepository<Schedule,Integer> {
       ) <= 5
     """)
     List<Schedule> findConflicts(
-            Integer stationId,
-            Integer platformId,
+            String stationId,
+            String platformId,
             String date,
             String time
     );

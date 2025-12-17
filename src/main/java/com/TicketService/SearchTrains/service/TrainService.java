@@ -3,6 +3,7 @@ package com.TicketService.SearchTrains.service;
 import com.TicketService.SearchTrains.Neo4j.StationGRepository;
 import com.TicketService.SearchTrains.Neo4j.StationNode;
 import com.TicketService.SearchTrains.Utils.DistanceUtil;
+import com.TicketService.SearchTrains.Utils.GeoUtils;
 import com.TicketService.SearchTrains.entities.Platform;
 import com.TicketService.SearchTrains.entities.Schedule;
 import com.TicketService.SearchTrains.entities.Station;
@@ -42,7 +43,6 @@ public class TrainService {
         return trainRepository.findAll();
     }
 
-    // ===================== ROUTE CREATION =====================
     @Transactional
     public void createRoute(
             String startStation,
@@ -52,7 +52,7 @@ public class TrainService {
             Train train
     ) {
 
-        // 1. Fetch path from Neo4j
+
         List<StationNode> path =
                 graphRepo.findStationPath(startStation, endStation);
 
@@ -67,12 +67,12 @@ public class TrainService {
                     .findById(currentNode.getStationId())
                     .orElseThrow(() -> new RuntimeException("Station not found"));
 
-            // 2. Calculate travel time (except first station)
+
             if (i > 0) {
                 StationNode previousNode = path.get(i - 1);
 
                 double distance =
-                        DistanceUtil.distance(
+                        GeoUtils.distance(
                                 previousNode.getLatitude(),
                                 previousNode.getLongitude(),
                                 currentNode.getLatitude(),
@@ -88,11 +88,11 @@ public class TrainService {
                 currentDateTime = currentDateTime.plusMinutes(minutes);
             }
 
-            // 3. Assign platform
+
             Platform platform =
                     assignPlatform(station, currentDateTime);
 
-            // 4. Save schedule
+
             Schedule schedule = new Schedule();
             schedule.setTrain(train);
             schedule.setStation(station);
@@ -104,7 +104,7 @@ public class TrainService {
         }
     }
 
-    // ===================== PLATFORM ASSIGNMENT =====================
+
     private Platform assignPlatform(
             Station station,
             LocalDateTime arrivalDateTime
