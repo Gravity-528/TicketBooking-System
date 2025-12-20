@@ -7,5 +7,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class SeatDTO {
     private String seatNo;
-    private String status;
+    private Boolean status;
 }

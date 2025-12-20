@@ -98,8 +98,8 @@ public class TrainService {
             schedule.setTrain(train);
             schedule.setStation(station);
             schedule.setPlatform(platform);
-            schedule.setTime(currentDateTime.toLocalDate().toString());
-            schedule.setDate(currentDateTime.toLocalDate().toString());
+            schedule.setTime(currentDateTime);
+//            schedule.setDate(currentDateTime.toLocalDate().toString());
 
             scheduleRepo.save(schedule);
         }
