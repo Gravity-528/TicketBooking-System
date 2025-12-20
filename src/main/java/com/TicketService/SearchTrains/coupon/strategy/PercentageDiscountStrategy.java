@@ -1,4 +1,4 @@
-package com.TicketService.SearchTrains.coupon;
+package com.TicketService.SearchTrains.coupon.strategy;
 
 public class PercentageDiscountStrategy implements DiscountStrategy {
 
