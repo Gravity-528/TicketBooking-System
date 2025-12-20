@@ -16,10 +16,11 @@ public class Coupon {
     @Id
     private String couponId;
     private String description;
-    private Integer discountPercentage;
+    private Integer discount;
+    private String typeOfDiscount;
 
     @OneToMany(mappedBy = "coupon")
-    private List<Ticket> tickets;
+    private List<Booking> bookings;
 
 
 

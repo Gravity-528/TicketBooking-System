@@ -14,11 +14,4 @@ public class Seats {
     @Id
     private String seatId;
     private Integer price;
-    private String status;
-    private String date;
-
-    @ManyToOne
-    @JoinColumn(name = "trainId")
-    private Train train;
-
 }

@@ -2,6 +2,7 @@ package com.TicketService.SearchTrains.service;
 
 import com.TicketService.SearchTrains.Neo4j.StationGRepository;
 import com.TicketService.SearchTrains.Neo4j.StationNode;
+import com.TicketService.SearchTrains.DTO.SchedulePairDTO;
 import com.TicketService.SearchTrains.Utils.DistanceUtil;
 import com.TicketService.SearchTrains.Utils.GeoUtils;
 import com.TicketService.SearchTrains.entities.Platform;
@@ -97,7 +98,7 @@ public class TrainService {
             schedule.setTrain(train);
             schedule.setStation(station);
             schedule.setPlatform(platform);
-            schedule.setTime(currentDateTime.toLocalTime().toString());
+            schedule.setTime(currentDateTime.toLocalDate().toString());
             schedule.setDate(currentDateTime.toLocalDate().toString());
 
             scheduleRepo.save(schedule);
@@ -132,4 +133,13 @@ public class TrainService {
                 "No platform available at station: " + station.getStationName()
         );
     }
+
+    private List<SchedulePairDTO> fetchAllTrain(String start,String destination,String trainId){
+        LocalDateTime nowTime=LocalDateTime.now();
+
+        return scheduleRepo.fetchSchedule(nowTime,start,destination);
+
+
+    }
+
 }

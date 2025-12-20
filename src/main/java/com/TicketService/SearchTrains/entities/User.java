@@ -22,8 +22,8 @@ public class User {
     private String password;
     private String role;
 
-    @OneToMany(mappedBy = "user")
-    private List<Ticket> tickets;
+//    @OneToMany(mappedBy = "user")
+//    private List<Booking> tickets;
 
 
 

@@ -1,15 +1,13 @@
 package com.TicketService.SearchTrains.entities;
 
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -24,9 +22,8 @@ public class Train {
     private String trainName;
     private String source;
     private String destination;
-    private String arrivalTime;
-    private String startDate;
-    private String endDate;
+    private Date arrivalTime;
+//    private String endDate;
 
     @OneToMany(mappedBy = "train")
     private List<Schedule> schedule;

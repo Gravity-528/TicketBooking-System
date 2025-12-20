@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Locale;
 
 @Data
 @NoArgsConstructor
@@ -16,8 +18,7 @@ public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer scheduleId;
-    private String time;
-    private String Date;
+    private LocalDateTime time;
 
     @ManyToOne
     @JoinColumn(name = "trainId")
@@ -31,8 +32,8 @@ public class Schedule {
     @JoinColumn(name = "platformId")
     private Platform platform;
 
-    @OneToMany(mappedBy = "schedule")
-    private List<Ticket> tickets;
+//    @OneToMany(mappedBy = "schedule")
+//    private List<Booking> bookings;
 
 
 }
